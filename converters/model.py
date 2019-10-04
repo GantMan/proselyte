@@ -59,13 +59,13 @@ def freeze_session(session, keep_var_names=None, output_names=None, clear_device
         frozen_graph = tf.graph_util.convert_variables_to_constants(
             session, input_graph_def, output_names, freeze_var_names)
         return frozen_graph
-      
+
 def keras2tf(path_of_keras_file, path_of_tf_dir, file='\file_name.pb'):
     model = load_model(path_of_keras_file)
     frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
     tf_pb = tf.train.write_graph(frozen_graph, path, file, as_text=False)
     return (tf_pb)
-    
+
 
 def keras2tflite(path_of_keras_file, path_of_tflite_dir, tflite_file_name = '\file_name.tflite'):
     # Convert Keras to TFLITE
@@ -82,12 +82,12 @@ def keras2tfjs(path_of_keras_file, path_of_tfjs_dir):
 
 # Zip all the Files
 zipObj = ZipFile(zip_dir + r'file.zip', 'w')
- 
+
 # Add multiple files to the zip
 zipObj.write(path_of_tflite_dir + r'\file.tflite')
 zipObj.write(path_of_tf_dir + r'\file.pb')
 zipObj.write(path_of_tfjs_dir + r'\file.json')
- 
+
 # Close the Zip File
 zipObj.close()
 

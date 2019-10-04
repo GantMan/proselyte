@@ -1,3 +1,4 @@
+
 absl-py==0.8.0
 astor==0.8.0
 gast==0.2.2
@@ -26,3 +27,9 @@ termcolor==1.1.0
 wcwidth==0.1.7
 Werkzeug==0.16.0
 wrapt==1.11.2
+coremltools
+keras2onnx
+onnxmltools
+pickle
+zipfile
+
