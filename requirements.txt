@@ -1,0 +1,8 @@
+coremltools
+keras2onnx
+onnxmltools
+pickle
+keras
+tensorflowjs
+tensorflow
+zipfile
