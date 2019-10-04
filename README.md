@@ -2,8 +2,6 @@
 
 ## Setup
 
-Not yet working
-
 ```
 $ python pip install -r requirements.txt
 ```
