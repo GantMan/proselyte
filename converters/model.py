@@ -4,7 +4,35 @@ from keras import backend as K
 import tensorflow as tf
 from zipfile import ZipFile
 import os
+from os import path
+import sys
 
+# command line arguments are stored in the form of list in sys.argv 
+argument_list = sys.argv
+len = len(argument_list)
+if len < 3:
+  raise Exception('Parameters missing. Please pass the path to the kera file and path to the zip directory for storing the converted moddels')
+path_to_keras_file = argument_list[1]
+path_to_zip_folder = argument_list[2]
+
+# Check if the location exists
+if path.exists(path_to_keras_file):  
+  # Check if it is a file
+  if path.isfile(path_to_keras_file):
+    # Check the files extension and verify if it is a valif keras file extension
+    extension = path.splitext(path_to_keras_file)[1]
+    if extension != '.h5':
+      raise Exception(u'Invalid keras file.')
+  else:  
+    raise Exception(u'The keras file is not a file.')
+else:
+  raise Exception(u'The keras file is missing at the path {}'.format(path_to_keras_file))
+
+# Check if the location exists
+if not path.exists(path_to_zip_folder):
+  raise Exception(u'The directory to the zip folder is missing at the path {}'.format(path_to_zip_folder))
+
+# Keras model file is available in the variable path_of_keras_file and the path to zip directory in path_to_zip_folder
 
 keras_model = './path/to/load/the/keras/model/file.h5' # path of the Keras model file
 path_of_tfjs_dir = '.path/to/save/the/tensorflowjs_file' # path of the Tensorflow JS directory

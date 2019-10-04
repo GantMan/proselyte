@@ -8,8 +8,6 @@ $ python pip install -r requirements.txt
 
 ## Usage
 
-Not yet working
-
 ```
 $ python model.py <path to keras file> <path to zip folder>
 ```
