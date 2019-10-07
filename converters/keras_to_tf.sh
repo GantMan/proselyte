@@ -16,7 +16,8 @@ NAME=${3:-model}
 RESULT_DIR="results/TF_${NAME}"
 # Make Tensorflow Results Folder
 mkdir $1/$RESULT_DIR
-K2TF="/Users/gantman/Documents/Projects/ml/keras_to_tensorflow/keras_to_tensorflow.py"
+#K2TF="/Users/gantman/Documents/Projects/ml/keras_to_tensorflow/keras_to_tensorflow.py"
+K2TF="/home/ec2-user/keras_to_tensorflow/keras_to_tensorflow.py"
 
 # convert to Tensorflow (expects python3 and keras_to_tensorflow)
 # https://github.com/amir-abdi/keras_to_tensorflow
