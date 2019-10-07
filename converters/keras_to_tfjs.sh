@@ -2,18 +2,21 @@
 # Convert a keras model to TFJS
 
 if [ "$1" == "" ]; then
-    echo "You must pass at least 1 param - where's that model?"
+    echo "First parameter is the path"
+    exit 1
+fi
+
+if [ "$2" == "" ]; then
+    echo "Second parameter is the file"
     exit 1
 fi
 
 # No name passed? Just use "model"
-NAME=${2:-model}
+NAME=${3:-model}
 RESULT_DIR="results/TFJS_${NAME}"
 
 # Regular
-tensorflowjs_converter --input_format keras $1 ./$RESULT_DIR/tfjs_$NAME
-zip ./$RESULT_DIR/tfjs_$NAME.zip ./$RESULT_DIR/tfjs_$NAME/
+tensorflowjs_converter --input_format keras $1/$2 $1/$RESULT_DIR/tfjs_$NAME
 # Quantized
-tensorflowjs_converter --quantization_bytes 1 --input_format keras $1 ./$RESULT_DIR/tfjs_quant_$NAME
-zip ./$RESULT_DIR/tfjs_quant_$NAME.zip ./$RESULT_DIR/tfjs_quant_$NAME/
+tensorflowjs_converter --quantization_bytes 1 --input_format keras $1/$2 $1/$RESULT_DIR/tfjs_quant_$NAME
 
