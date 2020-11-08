@@ -18,5 +18,8 @@ RESULT_DIR="results/TFJS_${NAME}"
 # Regular
 tensorflowjs_converter --input_format keras $1/$2 $1/$RESULT_DIR/tfjs_$NAME
 # Quantized
-tensorflowjs_converter --quantization_bytes 1 --input_format keras $1/$2 $1/$RESULT_DIR/tfjs_quant_$NAME
+tensorflowjs_converter --quantize_uint8 --input_format keras $1/$2 $1/$RESULT_DIR/tfjs_quant_uint8_$NAME
+tensorflowjs_converter --quantize_uint16 --input_format keras $1/$2 $1/$RESULT_DIR/tfjs_quant_uint16_$NAME
+tensorflowjs_converter --quantize_float16 --input_format keras $1/$2 $1/$RESULT_DIR/tfjs_quant_float16_$NAME
+
 
